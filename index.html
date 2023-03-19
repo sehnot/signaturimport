@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title>SignaturImport</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="index.html">SignaturImport<span class="dot">.de</span></a>
+        <div class="navbar-links">
+            <a href="infos.html">Infos</a>
+            <a href="credits.html">Credits</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badges">
+            <span class="hero-tag">Kostenlos</span>
+            <span class="hero-tag">Open Source</span>
+            <span class="hero-tag">Offline</span>
+        </div>
+        <h1>SignaturImport.de</h1>
+        <p>Importieren Sie Email-Signaturen direkt als Kontakte in Ihr Adressbuch.</p>
+        <p>Alles funktioniert lokal bei Ihnen im Browser, die Daten werden nicht ins Internet übertragen. Weitere Infos dazu <a href="infos.html">hier</a>.</p>
+    </section>
+
+    <!-- Tool -->
+    <div class="tool-section">
+        <div class="tool-card">
+
+            <!-- Left: Signature input -->
+            <div class="panel-left">
+                <div class="panel-label">Email-Signatur</div>
+                <textarea id="signature" name="signaturefield"
+                    placeholder="Email-Signatur hier einfügen — die Analyse startet automatisch."
+                    oninput="debouncedExtraction()"></textarea>
+            </div>
+
+            <!-- Right: Extracted data -->
+            <div class="panel-right">
+                <div>
+                    <div class="panel-label">Extrahierte Daten</div>
+                    <div class="fields-grid">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="stellenbezeichnung">Stellenbezeichnung</label>
+                            <input type="text" id="stellenbezeichnung" name="stellenbezeichnung" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" name="email" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="telefonnummer">Telefon</label>
+                            <input type="text" id="telefonnummer" name="telefonnummer" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="handynummer">Handy</label>
+                            <input type="text" id="handynummer" name="handynummer" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="faxnummer">Fax</label>
+                            <input type="text" id="faxnummer" name="faxnummer" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="adresse">Adresse</label>
+                            <input type="text" id="adresse" name="adresse" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="postleitzahl">Postleitzahl</label>
+                            <input type="text" id="postleitzahl" name="postleitzahl" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="ort">Ort</label>
+                            <input type="text" id="ort" name="ort" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="land">Land</label>
+                            <input type="text" id="land" name="land" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="firma">Firma</label>
+                            <input type="text" id="firma" name="firma" placeholder="—" />
+                        </div>
+                        <div class="field">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" placeholder="—" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a href="" class="btn-primary" id="generateVCardBtn">Download vCard</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Tips -->
+    <section class="tips-section">
+        <div class="tips-heading">Hinweise</div>
+        <div class="tips-list">
+            <div class="tip">Falls bei der Analyse einige Daten nicht korrekt erkannt werden, hilft es, nicht
+                benötigte Zeilen zu löschen. Ist beispielsweise eine Post- und eine Besuchsadresse angegeben,
+                einfach eine der beiden löschen.</div>
+            <div class="tip">Die Analyse von zu vielen Daten innerhalb einer Zeile kann fehlerhaft sein. Wenn
+                in einer Zeile bspw. mehrere Nummern angegeben sind (Telefon, Handy, Fax), ist es hilfreich
+                diese mit Enter auf einzelne Zeilen zu 'verschieben'.</div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Stephan Otto</p>
+    </footer>
+
+    <!-- Skripte -->
+    <script src="assets/js/extract.js"></script>
+    <script src="assets/js/export.js"></script>
+    <script>
+        // 300ms Debounce für die automatische Signaturanalyse beim Tippen
+        let extractionTimer;
+        function debouncedExtraction() {
+            clearTimeout(extractionTimer);
+            extractionTimer = setTimeout(signatureExtraction, 300);
+        }
+    </script>
+
+</body>
+
+</html>

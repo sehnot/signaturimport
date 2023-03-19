@@ -1,0 +1,19 @@
+{
+  "name": "signaturimport",
+  "version": "1.0.0",
+  "description": "Quellcode für signaturimport.de",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jasmine-browser-runner runSpecs --config=jasmine-browser-runner.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine-browser-runner": "^4.0.0",
+    "jasmine-core": "^6.1.0"
+  }
+}

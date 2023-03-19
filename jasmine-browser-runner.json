@@ -1,0 +1,11 @@
+{
+  "srcDir": "assets/js",
+  "srcFiles": ["extract.js"],
+  "specDir": "tests",
+  "specFiles": ["specs/specs.js"],
+  "helpers": [],
+  "random": false,
+  "browser": {
+    "name": "headlessChrome"
+  }
+}
